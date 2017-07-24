@@ -36,7 +36,7 @@ namespace TalkedToyou
 		
 		// includes characters you talked to
 		// MOVED THIS TO GLOBAL SCOPE? made it an empty string array.
-		public String[] TalkedToYou = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"}; 
+		public String[] TalkedToYou = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"}; 
 
         private void ControlEvents_KeyPress(object sender, EventArgsKeyPressed e)
         {
@@ -45,26 +45,30 @@ namespace TalkedToyou
             {
 				
 				
-				var allCharacters = new String[27] {"Elliott", "Shane", "Sebastian", "Harvey", "Abigail", "Emily", "Haley", "Leah", "Maru", "Penny", "Caroline", "Clint", "Demetrius", "Evelyn", "George", "Gus", "Jas", "Jodi", "Lewis", "Marnie", "Linus", "Pam", "Pierre", "Robin", "Vincent", "Willy", "Wizard"};
+				var allCharacters = new String[28] {"Alex", "Elliott", "Shane", "Sebastian", "Harvey", "Abigail", "Emily", "Haley", "Leah", "Maru", "Penny", "Caroline", "Clint", "Demetrius", "Evelyn", "George", "Gus", "Jas", "Jodi", "Lewis", "Marnie", "Linus", "Pam", "Pierre", "Robin", "Vincent", "Willy", "Wizard"};
 
 				string currLocation = Game1.currentLocation.ToString();
-				this.Monitor.Log($"The current location is {currLocation}!");
 				String[] locArr = currLocation.Split('.');
-				String location = locArr[2];
+				String location = locArr[1];
+
+				if(location == "Locations"){
+					location = locArr[2];
+				}else if(location == "GameLocation"){
+					location = "this location";
+				}
 
 				
 				if (Context.IsWorldReady) {
 
 				// should include ALL characters and players children
-				var NotTalked = new String[27] {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
+				var NotTalked = new String[28] {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
 				
 				// if the person is here, they'll be in this array. resets on every location change.
-				var isHere = new String[27] {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
+				var isHere = new String[28] {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
 
 				if(Game1.newDay){
-					this.Monitor.Log("New day, making all the talk arrays null!");
 					int x = 0;
-					while(x >= 26){
+					while(x >= 27){
 						NotTalked[x] = null;
 						TalkedToYou[x] = null;
 						isHere[x] = null;
@@ -78,23 +82,18 @@ namespace TalkedToyou
 
 						if(character.ToString() == "StardewValley.NPC" && !(character.ToString() == "StardewValley.Characters.Child"))
 						{
-							this.Monitor.Log($"{character.name} is here!");
 							int talkStack = GetCurrentDialogue(character).Count;
 
 							// add name to isHere array
 							int j = 0;
 							foreach (String name in isHere){
 								if(isHere[j] == character.name){
-									this.Monitor.Log($"{character.name} is already in the isHere array!");
 									break;
 								}
 
 								if(isHere[j] == "null"){
-									this.Monitor.Log($"adding {character.name} to the ishere array because they are here!");
-									
 									isHere[j] = character.name;
 									String check = isHere[j];
-									this.Monitor.Log($"confirming {check} is on the list");
 									break;
 								}
 								
@@ -118,17 +117,16 @@ namespace TalkedToyou
 									// and put them in the talked to array
 									if(TalkedToYou[k] == "null"){
 											TalkedToYou[k] = character.name;
-									
+											
 											String check2 = TalkedToYou[k];
+											this.Monitor.Log($"You talked to {character.name} today! check: {check2}");
 											// THIS WORKS!
 											break;
 										}
 										k++;
 									}
-								this.Monitor.Log($"You talked to {character.name} today!");
+								
 													
-							}else{
-								this.Monitor.Log($"You haven't spoken to {character.name} and they are here!");
 							}
 						}
 
@@ -153,9 +151,10 @@ namespace TalkedToyou
 							}
 							y++;
 						}
+
 						if(talkedTo == false){
 							int z = 0;
-							while(z <= 26){
+							while(z <= 27){
 								string check2 = NotTalked[z];
 								this.Monitor.Log($"NOT talked to array: {check2}");
 								if(NotTalked[z] == "null"){
@@ -168,9 +167,9 @@ namespace TalkedToyou
 						}else if(talkedTo == true){
 							// Talked to whomever, so remove them from notTalked
 							int s = 0;
-							while(s <= 26){
+							while(s <= 27){
 								if(NotTalked[s] == name){
-									this.Monitor.Log($"Talkd to {name} so removing them from Not Talked, lol this is crazy");
+									this.Monitor.Log($"Talked to {name} so removing them from Not Talked, lol this is crazy");
 									NotTalked[s] = "null";
 								}
 								s++;
@@ -179,26 +178,46 @@ namespace TalkedToyou
 					}
 
 						// NotTalked, isHere, & TalkedToYou	
-						String talkedToHere;
 						String notTalkedToHere = "";
+						String notTalkedNotHere = "";
+						bool show = false;
+						int num = 1;
 
 						foreach(String name in isHere){
 							int f = 0;
-							int num = 1;
-
-							while(f <= 26){
-								this.Monitor.Log($"loopin thru this, to up to: {name}");
+							while(f <= 27){
 								if(name == NotTalked[f] && name != "null"){
-									this.Monitor.Log($"adding {name} to this janky ass string");
-									notTalkedToHere += num + ". " + name;
+									notTalkedToHere += $"{num}. {name} ";
+									num++;
+									show = true;
+								}
+								f++;
+							}
+							
+						}
+						
+
+
+						foreach(String name in NotTalked){
+							int f = 0;
+							while(f <= 27){
+								int num = 1;
+								if(name != isHere[f] && name != "null"){
+									notTalkedNotHere += $"{num}. {name} ";
+								
 									num++;
 								}
 								f++;
 							}
 						}
-
-						Game1.drawObjectDialogue($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}");
+						
+						if(show == true){
+							Game1.drawObjectDialogue($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}");
+						}else{
+							Game1.drawObjectDialogue($"There is no one to talk to in {location}.");
+						}
 					
+						// Game1.drawObjectDialogue($"You still need to talk to: {notTalkedNotHere}");
 				}
             }
        	 }
