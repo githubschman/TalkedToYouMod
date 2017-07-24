@@ -1,0 +1,5 @@
+/Users/sarahhubschman/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS/Mods/RainbowMod/RainbowMod/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/sarahhubschman/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS/Mods/RainbowMod/RainbowMod/bin/Debug/RainbowMod.pdb
+/Users/sarahhubschman/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS/Mods/RainbowMod/RainbowMod/bin/Debug/RainbowMod.dll
+/Users/sarahhubschman/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS/Mods/RainbowMod/RainbowMod/obj/Debug/RainbowMod.dll
+/Users/sarahhubschman/Library/Application Support/Steam/steamapps/common/Stardew Valley/Contents/MacOS/Mods/RainbowMod/RainbowMod/obj/Debug/RainbowMod.pdb

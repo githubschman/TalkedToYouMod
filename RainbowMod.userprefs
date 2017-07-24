@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="RainbowMod/packages.config">
+    <Files>
+      <File FileName="RainbowMod/Properties/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="RainbowMod/packages.config" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
