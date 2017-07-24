@@ -181,43 +181,40 @@ namespace TalkedToyou
 						String notTalkedToHere = "";
 						String notTalkedNotHere = "";
 						bool show = false;
-						int num = 1;
+						int num1 = 1;
+						int num2 = 1;
 
 						foreach(String name in isHere){
 							int f = 0;
 							while(f <= 27){
 								if(name == NotTalked[f] && name != "null"){
-									notTalkedToHere += $"{num}. {name} ";
-									num++;
+									notTalkedToHere += $"{num1}. {name} ";
+									num1++;
 									show = true;
 								}
 								f++;
 							}
 							
-						}
+						}			
 						
-
-
-						foreach(String name in NotTalked){
-							int f = 0;
-							while(f <= 27){
-								int num = 1;
-								if(name != isHere[f] && name != "null"){
-									notTalkedNotHere += $"{num}. {name} ";
-								
-									num++;
+					
+							int g = 0;
+							while(g <= 27){
+								if(NotTalked[g] != "null"){
+									notTalkedNotHere += $"{num2}. {NotTalked[g]} ";
+									num2++;
 								}
-								f++;
+								g++;
 							}
-						}
+							
+												
+						
 						
 						if(show == true){
-							Game1.drawObjectDialogue($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}");
+							Game1.drawObjectDialogue($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}. ---------------------------- You still need to talk to {notTalkedNotHere}");
 						}else{
-							Game1.drawObjectDialogue($"There is no one to talk to in {location}.");
+							Game1.drawObjectDialogue($"There is no one to talk to in {location}. ---------------------------- You still need to talk to {notTalkedNotHere}");
 						}
-					
-						// Game1.drawObjectDialogue($"You still need to talk to: {notTalkedNotHere}");
 				}
             }
        	 }
