@@ -43,13 +43,16 @@ namespace TalkedToyou
 
             if (Context.IsWorldReady && Context.IsPlayerFree && e.KeyPressed.ToString() == "Q")
             {
-				Game1.drawObjectDialogue("Sarah is SO COOL");
+				
 				
 				var allCharacters = new String[27] {"Elliott", "Shane", "Sebastian", "Harvey", "Abigail", "Emily", "Haley", "Leah", "Maru", "Penny", "Caroline", "Clint", "Demetrius", "Evelyn", "George", "Gus", "Jas", "Jodi", "Lewis", "Marnie", "Linus", "Pam", "Pierre", "Robin", "Vincent", "Willy", "Wizard"};
 
 				string currLocation = Game1.currentLocation.ToString();
 				this.Monitor.Log($"The current location is {currLocation}!");
-			
+				String[] locArr = currLocation.Split('.');
+				String location = locArr[2];
+
+				
 				if (Context.IsWorldReady) {
 
 				// should include ALL characters and players children
@@ -57,7 +60,6 @@ namespace TalkedToyou
 				
 				// if the person is here, they'll be in this array. resets on every location change.
 				var isHere = new String[27] {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"};
-
 
 				if(Game1.newDay){
 					this.Monitor.Log("New day, making all the talk arrays null!");
@@ -71,24 +73,9 @@ namespace TalkedToyou
 				}
 
 
-				// Rectangle target = this.GetTarget();
-				//this.Monitor.Log($"{target.ToString()} is the target!");
-
-
 				foreach (NPC character in Game1.currentLocation.characters)
 					{
-									
-						Rectangle notalkBox;
-						Rectangle talkBox;
-						Vector2 monsterLocalPosition;
-						Color barColor;
-						String talked;
-						// ?
-						float talkPercentage;
-						float barLengthPercent;
-						int monsterKilledAmount;
 
-						
 						if(character.ToString() == "StardewValley.NPC" && !(character.ToString() == "StardewValley.Characters.Child"))
 						{
 							this.Monitor.Log($"{character.name} is here!");
@@ -152,7 +139,7 @@ namespace TalkedToyou
 						int y = 0;
 						bool talkedTo = false;
 
-						while(y<=25){
+						while(y<=26){
 
 							string check = TalkedToYou[y];
 							this.Monitor.Log($"looking to see if {name} is in talked to you, at {check}");
@@ -168,7 +155,7 @@ namespace TalkedToyou
 						}
 						if(talkedTo == false){
 							int z = 0;
-							while(z <= 25){
+							while(z <= 26){
 								string check2 = NotTalked[z];
 								this.Monitor.Log($"NOT talked to array: {check2}");
 								if(NotTalked[z] == "null"){
@@ -181,7 +168,7 @@ namespace TalkedToyou
 						}else if(talkedTo == true){
 							// Talked to whomever, so remove them from notTalked
 							int s = 0;
-							while(s <= 25){
+							while(s <= 26){
 								if(NotTalked[s] == name){
 									this.Monitor.Log($"Talkd to {name} so removing them from Not Talked, lol this is crazy");
 									NotTalked[s] = "null";
@@ -190,21 +177,30 @@ namespace TalkedToyou
 							}
 						}
 					}
+
+						// NotTalked, isHere, & TalkedToYou	
+						String talkedToHere;
+						String notTalkedToHere = "";
+
+						foreach(String name in isHere){
+							int f = 0;
+							int num = 1;
+
+							while(f <= 26){
+								this.Monitor.Log($"loopin thru this, to up to: {name}");
+								if(name == NotTalked[f] && name != "null"){
+									this.Monitor.Log($"adding {name} to this janky ass string");
+									notTalkedToHere += num + ". " + name;
+									num++;
+								}
+								f++;
+							}
+						}
+
+						Game1.drawObjectDialogue($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}");
 					
 				}
-
-				
             }
        	 }
-
-		// private Rectangle GetTarget()
-        // {
-        //     return new Rectangle(
-        //         x: (Game1.graphics.GraphicsDevice.Viewport.Width - 300) + 108,
-        //         y: (Game1.tileSize / 8) + 20,
-        //         width: 160,
-        //         height: 41
-        //     );
-		// }
 	}
 }
