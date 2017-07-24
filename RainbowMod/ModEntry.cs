@@ -7,6 +7,7 @@ using StardewValley;
 using StardewValley.Characters;
 using Microsoft.Xna.Framework.Input;
 using StardewValley.Menus;
+using System.Text;
 
 namespace TalkedToyou
 {
@@ -35,19 +36,19 @@ namespace TalkedToyou
 		
 		// includes characters you talked to
 		// MOVED THIS TO GLOBAL SCOPE? made it an empty string array.
-		public String[] TalkedToYou = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"}; 
+		public String[] TalkedToYou = {"null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null", "null"}; 
 
         private void ControlEvents_KeyPress(object sender, EventArgsKeyPressed e)
         {
 
             if (Context.IsWorldReady && Context.IsPlayerFree && e.KeyPressed.ToString() == "Q")
             {
+				Game1.drawObjectDialogue("Sarah is SO COOL");
 				
 				var allCharacters = new String[27] {"Elliott", "Shane", "Sebastian", "Harvey", "Abigail", "Emily", "Haley", "Leah", "Maru", "Penny", "Caroline", "Clint", "Demetrius", "Evelyn", "George", "Gus", "Jas", "Jodi", "Lewis", "Marnie", "Linus", "Pam", "Pierre", "Robin", "Vincent", "Willy", "Wizard"};
 
 				string currLocation = Game1.currentLocation.ToString();
 				this.Monitor.Log($"The current location is {currLocation}!");
-
 			
 				if (Context.IsWorldReady) {
 
@@ -70,16 +71,9 @@ namespace TalkedToyou
 				}
 
 
-				Rectangle target = this.GetTarget();
+				// Rectangle target = this.GetTarget();
 				//this.Monitor.Log($"{target.ToString()} is the target!");
 
-				// int i = 0;
-				// foreach(NPC character in Game1.player.getChildren()){
-				// 	this.Monitor.Log($"{character.name} is players child!");
-				// 	NotTalked[i] = character.name;
-				// 	var nottalked = NotTalked[i];
-				// 	i++;
-				// }
 
 				foreach (NPC character in Game1.currentLocation.characters)
 					{
@@ -158,10 +152,10 @@ namespace TalkedToyou
 						int y = 0;
 						bool talkedTo = false;
 
-						while(y<=26){
+						while(y<=25){
 
-							// string check = TalkedToYou[y];
-							// this.Monitor.Log($"looking to see if {name} is in talked to you, at {check}");
+							string check = TalkedToYou[y];
+							this.Monitor.Log($"looking to see if {name} is in talked to you, at {check}");
 
 							// if they are in the arrays talkedtoyou, don't include in nottalked
 							if(TalkedToYou[y] == name){
@@ -174,7 +168,7 @@ namespace TalkedToyou
 						}
 						if(talkedTo == false){
 							int z = 0;
-							while(z <= 26){
+							while(z <= 25){
 								string check2 = NotTalked[z];
 								this.Monitor.Log($"NOT talked to array: {check2}");
 								if(NotTalked[z] == "null"){
@@ -187,7 +181,7 @@ namespace TalkedToyou
 						}else if(talkedTo == true){
 							// Talked to whomever, so remove them from notTalked
 							int s = 0;
-							while(s <= 26){
+							while(s <= 25){
 								if(NotTalked[s] == name){
 									this.Monitor.Log($"Talkd to {name} so removing them from Not Talked, lol this is crazy");
 									NotTalked[s] = "null";
@@ -196,20 +190,21 @@ namespace TalkedToyou
 							}
 						}
 					}
+					
 				}
 
-
+				
             }
        	 }
 
-		private Rectangle GetTarget()
-        {
-            return new Rectangle(
-                x: (Game1.graphics.GraphicsDevice.Viewport.Width - 300) + 108,
-                y: (Game1.tileSize / 8) + 20,
-                width: 160,
-                height: 41
-            );
-		}
+		// private Rectangle GetTarget()
+        // {
+        //     return new Rectangle(
+        //         x: (Game1.graphics.GraphicsDevice.Viewport.Width - 300) + 108,
+        //         y: (Game1.tileSize / 8) + 20,
+        //         width: 160,
+        //         height: 41
+        //     );
+		// }
 	}
 }
