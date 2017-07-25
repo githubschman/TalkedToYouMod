@@ -1,5 +1,5 @@
 ﻿{
-   "Name": "RainbowMod",
+   "Name": "TalkedToYou",
    "Author": "Sarah",
    "Version": {
       "MajorVersion": 1,
@@ -7,7 +7,7 @@
       "PatchVersion": 0,
       "Build": null
    },
-   "Description": "Press 'Q' to see who you have spoken to, who you haven't spoken to, and if someone you haven't spoken to is on the lot.",
-   "UniqueID": "Sarah.RainbowMod",
+   "Description": "Press 'Q' to see who you haven't spoken to and if someone you haven't spoken to is on the lot.",
+   "UniqueID": "Sarah.TalkedToYou",
    "EntryDll": "RainbowMod.dll"
 }
