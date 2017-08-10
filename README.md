@@ -1,7 +1,7 @@
 # Talked to You 
-a mod created for Stardew Valley
-![mod in the wild](https://raw.githubusercontent.com/githubschman/talked-to-you/master/RainbowMod/screencast.gif)
 
+![mod in the wild](https://raw.githubusercontent.com/githubschman/talked-to-you/master/RainbowMod/screencast.gif)
+a mod created for Stardew Valley
 ## How to Play
 
 Get the latest version of SMAPI, an open-source modding API for Stardew Valley 
