@@ -1,5 +1,5 @@
-# TALKED TO YOU: a mod created for Stardew Valley
-
+# Talked to You 
+a mod created for Stardew Valley
 ![mod in the wild](https://raw.githubusercontent.com/githubschman/talked-to-you/master/RainbowMod/screencast.gif)
 
 ## How to Play
