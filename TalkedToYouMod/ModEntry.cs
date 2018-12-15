@@ -125,9 +125,9 @@ namespace TalkedToyou
 							y++;
 						}
 
-						if(talkedTo == false){
+						if (talkedTo == false) {
 							int z = 0;
-							while(z <= 27){
+							while (z <= 27) {
 								string check2 = NotTalked[z];
 								if(NotTalked[z] == "null"){
 									NotTalked[z] = name;
@@ -135,9 +135,9 @@ namespace TalkedToyou
 								}
 								z++;
 							}
-						}else if(talkedTo == true){
+						} else if (talkedTo == true) {
 							int s = 0;
-							while(s <= 27){
+							while(s <= 27) {
 								if(NotTalked[s] == name){
 									NotTalked[s] = "null";
 								}
@@ -150,33 +150,33 @@ namespace TalkedToyou
 					String notTalkedToHere = "";
 					String notTalkedNotHere = "";
 					bool show = false;
-					int num1 = 1;
-					int num2 = 1;
+					int hereNum = 1;
+					int notHereNum = 1;
 
-					foreach(String name in isHere){
-						int f = 0;
-						while(f <= 27){
-							if(name == NotTalked[f] && name != "null"){
-								notTalkedToHere += $"{num1}. {name} ";
-								num1++;
+					foreach(String name in isHere) {
+						int presentIndex = 0;
+						while(presentIndex <= 27){
+							if(name == NotTalked[presentIndex] && name != "null"){
+								notTalkedToHere += $"{hereNum}. {name} ";
+								hereNum++;
 								show = true;
 							}
-							f++;
+							presentIndex++;
 						}
 					}			
-						int g = 0;
-						while(g <= 27){
-							if(NotTalked[g] != "null"){
-								notTalkedNotHere += $"{num2}. {NotTalked[g]} ";
-								num2++;
-							}
-							g++;
+					int notPresentIndex = 0;
+					while (notPresentIndex <= 27) {
+						if (NotTalked[notPresentIndex] != "null") {
+							notTalkedNotHere += $"{notHereNum}. {NotTalked[notPresentIndex]} ";
+							notHereNum++;
 						}
+						notPresentIndex++;
+					}
 				
 					// finally, draw the messages!
-					if(show == true){
+					if (show == true) {
 						Game1.drawLetterMessage($"Here are the players in {location} who you haven't talked to: {notTalkedToHere}. You still need to talk to {notTalkedNotHere}");
-					}else{	
+					} else {	
 						Game1.drawLetterMessage($"There is no one to talk to in {location}. You still need to talk to {notTalkedNotHere}");
 					}
 				}

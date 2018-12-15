@@ -2,7 +2,7 @@
 
 _a mod created for Stardew Valley_
 
-![mod in the wild](https://raw.githubusercontent.com/githubschman/talked-to-you/master/RainbowMod/screencast.gif)
+![mod in the wild](https://raw.githubusercontent.com/githubschman/talked-to-you/master/TalkedToYouMod/screencast.gif)
 
 ## How to Play
 
